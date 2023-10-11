@@ -33,6 +33,60 @@
 <button onclick="addFront()">Add front</button>
 <button onclick="remove()">Remove</button>
 <button onclick="swapElements()">Swap</button>
+<script>
+    function makeNewDiv() {
+        let element = document.createElement("div")
+        element.innerHTML = document.getElementById("inputText").value;
+        element.style.color = "pink"
+        element.className = "merger";
+
+        
+        let container = document.getElementById('target')
+        container.appendChild(element)
+    }
+
+    function addFront() {
+        let element = document.createElement("div");
+        element.innerHTML = document.getElementById("inputText").value;
+        element.style.color = "black";
+        element.className = "merger";
+
+        
+        let container = document.getElementById('target');
+        container.insertBefore(element, container.firstChild);
+    }
+
+    function remove() {
+        let mergerItems = document.getElementsByClassName("merger");
+
+        let length = mergerItems.length;
+        let middleIndex = Math.floor(length / 2);
+        if (length > 0) {
+            
+            mergerItems[middleIndex].remove();
+        }
+    }
+
+    function swapElements() {
+        let mergerItems = document.getElementsByClassName("merger");
+        let length = mergerItems.length;
+
+        if (length >= 2) {
+            let index1 = Math.floor(Math.random() * length);
+            let index2 = Math.floor(Math.random() * length);
+            while (index1 === index2) {
+                index2 = Math.floor(Math.random() * length);
+            }
+            let element1 = mergerItems[index1];
+            let element2 = mergerItems[index2];
+
+            let container = document.getElementById('target');
+            let nextElementAfterElement2 = element2.nextElementSibling;
+            container.insertBefore(element2, element1);
+            container.insertBefore(element1, nextElementAfterElement2);
+        }
+    }
+</script>
 
 
 
