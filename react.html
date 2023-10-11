@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Set Timeout</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+  <h2> Akhila Gonegari Speed Check</h2>
+  <br>
+
+  <div class="container border bg-warning" style="padding-top: 10px; color: rgb(5, 71, 109);">
+      <p id="target">Your Time</p>
+    </div>
+    <div class="container border bg-primary" style="padding-top: 10px; color: rgb(3, 10, 11);">
+      <p id="counter">Count</p>
+    </div>
+    <br>
+    <button type="button" class="btn-success" onclick="startTime()">Start Timer</button>
+    <button type="button" class="btn-success" onclick="startTime()">React</button>
+    
+    <script>
+        var reactTime = undefined;
+
+function recordTime()
+{
+    reactTime = Date.now();
+    console.log(reactTime);
+}
+function startTime(){
+  for(let i=0;i<=8;i++){
+      setTimeout(() => {
+          document.getElementById('counter').innerHTML = "Count: "+i
+      }, (8-i)*1000)
+  }
+  setTimeout(()=>{
+  if(reactTime==undefined){
+      document.getElementById('target').innerHTML="Too Slow"
+  }
+  else{
+      endTime = Date.now()
+      document.getElementById('target').innerHTML = "Time was "+(endTime-reactTime)
+  }
+  },8*1000)
+}
+
+function randomStart(){
+startCount = Math.floor(Math.random()*(10-2+1)+2)
+startTime()
+}
+</script>
+</body>
+</html>
+
