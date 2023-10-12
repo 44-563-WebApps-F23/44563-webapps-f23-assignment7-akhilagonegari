@@ -22,37 +22,38 @@
     </div>
     <br>
     <button type="button" class="btn-success" onclick="startTime()">Start Timer</button>
-    <button type="button" class="btn-success" onclick="startTime()">React</button>
+    <button type="button" class="btn-success" onclick="RecordTime()">React</button>
     
     <script>
         var reactTime = undefined;
 
-function recordTime()
-{
-    reactTime = Date.now();
-    console.log(reactTime);
-}
-function startTime(){
-  for(let i=0;i<=8;i++){
-      setTimeout(() => {
-          document.getElementById('counter').innerHTML = "Count: "+i
-      }, (8-i)*1000)
-  }
-  setTimeout(()=>{
-  if(reactTime==undefined){
-      document.getElementById('target').innerHTML="Too Slow"
-  }
-  else{
-      endTime = Date.now()
-      document.getElementById('target').innerHTML = "Time was "+(endTime-reactTime)
-  }
-  },8*1000)
-}
 
-function randomStart(){
-startCount = Math.floor(Math.random()*(10-2+1)+2)
-startTime()
-}
+        function recordTime()
+        {
+            reactTime = Date.now();
+            console.log(reactTime);
+        }
+        function startTime(){
+          for(let i=0;i<=8;i++){
+              setTimeout(() => {
+                  document.getElementById('counter').innerHTML = "Count: "+i
+              }, (8-i)*1000)
+          }
+          setTimeout(()=>{
+          if(reactTime==undefined){
+              document.getElementById('target').innerHTML="Too Slow"
+          }
+          else{
+              endTime = Date.now()
+              document.getElementById('target').innerHTML = "Time was "+(endTime-reactTime)
+          }
+          },8*1000)
+      }
+
+  
+        document.getElementById("startButton").onclick = startTime;
+
+
 </script>
 </body>
 </html>
